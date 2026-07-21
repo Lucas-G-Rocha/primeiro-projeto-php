@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Professor extends Model
 {
     use HasFactory;
@@ -12,4 +13,8 @@ class Professor extends Model
     protected $casts = [
         'classes' => 'array'
     ];
+
+    public function aulas(){
+        return $this->hasMany(Aula::class);
+    }
 }

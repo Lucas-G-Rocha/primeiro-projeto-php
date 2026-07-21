@@ -15,17 +15,27 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">Eventos</a>
+                <a class="navbar-brand active" aria-current="page" href="/">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                        <a class="nav-link" href="/">Eventos</a>
                         <a class="nav-link" href="/events/create">Criar Eventos</a>
-                        <a class="nav-link" href="/hello">Hello</a>
+                        <a class="nav-link" href="/getAulas">Aulas</a>
+                        <a class="nav-link" href="/createAula">Criar Aulas</a>
+
+                        @if(!Auth::check())
+                            <a href="/login" class="nav-link">Login</a>
+                        @else
+                            <form action="{{ route('logout.api') }}" method="POST">
+                                @csrf
+                                <input type="submit" class="nav-link" value="Logout">
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>
