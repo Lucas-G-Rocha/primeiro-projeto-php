@@ -34,5 +34,5 @@ Route::post('/createdAula', [EventController::class, 'createAula'])->name('creat
 Route::get('/getAulas', [EventController::class, 'getAulas'])->name('aulas');
 
 Route::delete('/deleteAula/{id}', [EventController::class, 'deleteAula'])->name('delete.aula')->middleware('authUser');
-Route::get('editAula', [EventController::class, 'editAula'])->name('edit.aula')->middleware('authUser');
-Route::put('editarAula', [EventController::class, 'editarAula'])->name('editar.aula')->middleware('authUser');
+Route::get('editAula/{id}', [EventController::class, 'editAula'])->name('edit.aula')->middleware('authUser');
+Route::put('editarAula/{id}', [EventController::class, 'editarAula'])->name('editar.aula')->middleware('authUser');

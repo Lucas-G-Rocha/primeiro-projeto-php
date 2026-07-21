@@ -89,23 +89,44 @@ class EventController extends Controller
         return view('aulas.getAulas', compact('aulas'));
     }
 
-    public function deleteAula($id){
+    public function deleteAula($id)
+    {
         $aula = Aula::findOrFail($id)->delete();
 
-        if(!$aula){
+        if (!$aula) {
             return back()->withErrors([
                 'failDelete' => 'Ocorreu um erro ao deletar aula'
             ]);
-        }else{
-            return back()->with('msg','Aula deletada');
+        } else {
+            return back()->with('msg', 'Aula deletada');
         }
     }
 
-    public function editAula($id){
+    public function editAula($id)
+    {
+        $professors = Professor::all(['name', 'id', 'dicipline']);
+        $aula = Aula::findOrFail($id);
 
+        if ($aula) {
+            return view('aulas.editAula', compact('professors', 'aula'));
+        }
+        return back()->with('msg', 'Aula não encontrada');
     }
 
-    public function editarAula(Request $request){
+    public function editarAula(Request $request, $id)
+    {
+        $aula = Aula::findOrFail($id);
+        if ($aula) {
+            $aula->name = $request->name;
+            $aula->professor_id = $request->professor_id;
+            $aula->save();
+
+            return redirect('/getAulas')->with('msg', 'Aula atualizada com sucesso!');
+
+        };
+    return back()->withErrors([
+        'failEdit' => 'Falha ao editar aula'
+    ])->withInput();
 
     }
 }
