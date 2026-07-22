@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="pt-BR">
 
 <head>
     <meta charset="utf-8">
@@ -17,12 +17,12 @@
             <div class="container-fluid">
                 <a class="navbar-brand active" aria-current="page" href="/">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
                         <a class="nav-link" href="/">Eventos</a>
                         <a class="nav-link" href="/events/create">Criar Eventos</a>
                         <a class="nav-link" href="/getAulas">Aulas</a>
@@ -42,7 +42,7 @@
         </nav>
     </header>
 
-    <main class="position-relative w-100 h-100 d-flex flex-column align-items-center justify-content-center gap-4 p-5">
+    <main class="position-relative w-100 h-100 d-flex flex-column align-items-center  gap-4 p-5">
 
         @yield('content')
 

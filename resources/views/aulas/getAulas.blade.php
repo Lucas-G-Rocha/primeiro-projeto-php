@@ -7,9 +7,9 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="mb-0">Aulas</h1>
         @if(auth()->check())
-        <a href="{{ route('create.aula') }}" class="btn btn-primary ms-4">
-            Nova Aula
-        </a>
+            <a href="{{ route('create.aula') }}" class="btn btn-primary ms-4">
+                Nova Aula
+            </a>
         @endif
     </div>
 
@@ -56,27 +56,41 @@
 
                         <div class="card-footer bg-transparent border-0 d-flex gap-2">
                             @if(auth()->check())
-                            <a
-                                href="{{ route('edit.aula', $aula->id) }}"
-                                class="btn btn-outline-primary btn-sm"
-                            >
-                                Editar
-                            </a>
+                                <a href="{{ route('edit.aula', $aula->id) }}" class="btn btn-outline-primary btn-sm">
+                                    Editar
+                                </a>
 
-                            <form
-                                action="{{ route('delete.aula', $aula->id) }}"
-                                method="POST"
-                            >
-                                @csrf
-                                @method('DELETE')
 
-                                <button
-                                    type="submit"
-                                    class="btn btn-outline-danger btn-sm"
-                                >
+                                <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#excluirModal">
                                     Excluir
                                 </button>
-                            </form>
+
+
+                                <div class="modal fade" id="excluirModal">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Deseja excluir {{ $aula->name }}?</h5>
+                                            </div>
+                                            
+                                                <div class="modal-footer">
+                                                    <div class="d-flex gap-4 align-items-center justify-content-center">
+                                                        <form action="{{ route('delete.aula', $aula->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                                Excluir
+                                                            </button>
+                                                        </form>
+                                                        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
                             @endif
 
                         </div>
